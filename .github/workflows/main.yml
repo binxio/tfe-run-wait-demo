@@ -12,17 +12,13 @@ jobs:
       TFE_API_TOKEN: ${{ secrets.TFE_API_TOKEN }}
     steps:
       -
-        name: Login to github container registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      -
         name: wait for terraform apply
         uses: addnab/docker-run-action@v3
         with:
-          image: ghcr.io/binxio/tfe-run-wait:0.6.4
+          image: binxio/tfe-run-wait:0.6.4
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           run: >
             tfe-run-wait
             --organization ${{ secrets.TFE_ORGANIZATION }}
