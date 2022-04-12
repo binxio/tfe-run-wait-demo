@@ -15,7 +15,7 @@ jobs:
         name: wait for terraform apply
         uses: addnab/docker-run-action@v3
         with:
-          image: binxio/tfe-run-wait:0.6.4
+          image: ghcr.io/binxio/tfe-run-wait:0.6.4
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
