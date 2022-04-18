@@ -15,7 +15,7 @@ jobs:
         with:
           action: wait
           branch: main
-          commit-sha: ${GITHUB_SHA}
+          commit_sha: ${GITHUB_SHA}
           token: ${{ secrets.TFE_API_TOKEN }}
-          clone-url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
+          clone_url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
           organization: ${{ secrets.TFE_ORGANIZATION }}
