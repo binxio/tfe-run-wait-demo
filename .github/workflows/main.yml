@@ -11,7 +11,7 @@ jobs:
     steps:
       -
         name: wait for terraform apply
-        uses: actions/tfe-run-wait-action@main
+        uses: binxio/tfe-run-wait-action@main
         with:
           action: wait
           branch: main
