@@ -14,8 +14,8 @@ jobs:
         uses: actions/tfe-run-wait-action@main
         with:
           action: wait
+          branch: main
+          commit-sha: ${GITHUB_SHA}
           token: ${{ secrets.TFE_API_TOKEN }}
           clone-url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
-          commit-sha: ${GITHUB_SHA}
-          branch: ${GITHUB_REF_NAME}
           organization: ${{ secrets.TFE_ORGANIZATION }}
