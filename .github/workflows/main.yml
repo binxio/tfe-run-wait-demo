@@ -8,23 +8,14 @@ jobs:
   build:
     name: wait-apply
     runs-on: ubuntu-latest
-    env:
-      TFE_API_TOKEN: ${{ secrets.TFE_API_TOKEN }}
     steps:
       -
         name: wait for terraform apply
-        uses: addnab/docker-run-action@v3
+        uses: actions/tfe-run-wait-action@main
         with:
-          image: ghcr.io/binxio/tfe-run-wait:0.6.4
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          run: >
-            tfe-run-wait
-            --organization ${{ secrets.TFE_ORGANIZATION }}
-            --clone-url ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
-            --commit-sha ${GITHUB_SHA}
-            --branch ${GITHUB_REF_NAME}
-            --wait-for policy_checked
-            --wait-for planned
-            --wait-for applied
+          action: wait
+          token: ${{ secrets.TFE_API_TOKEN }}
+          clone-url: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
+          commit-sha: ${GITHUB_SHA}
+          branch: ${GITHUB_REF_NAME}
+          organization: ${{ secrets.TFE_ORGANIZATION }}
