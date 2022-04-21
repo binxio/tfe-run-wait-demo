@@ -1,3 +1,3 @@
 # tfe-run-wait-demo
 
-demonstrates apply again and again and again and again
+demonstrates apply again and again and again and again and again
